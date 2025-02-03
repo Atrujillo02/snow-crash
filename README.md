@@ -1,2 +1,18 @@
-# snow-crash
-Repositorio del proyecto Snow Crash de 42, un desafío de seguridad informática basado en la identificación y explotación de vulnerabilidades. Desarrollado en colaboración con [nombre del compañero], documentamos las soluciones, enfoques y aprendizajes obtenidos en cada nivel. Proyecto con fines educativos y realizado en un entorno controlado.
+
+Aquí tienes una descripción más profesional para tu repositorio en GitHub:
+
+🏴‍☠️ Snow Crash - 42
+Este repositorio documenta la resolución del proyecto Snow Crash de la escuela 42, realizado en colaboración con @ruzafa8. Se trata de un desafío de seguridad informática diseñado para desarrollar habilidades en análisis de vulnerabilidades, explotación y seguridad en software.
+
+🎯 Objetivo
+El proyecto consiste en una serie de niveles, cada uno con una vulnerabilidad específica que debe identificarse y explotarse para obtener acceso al siguiente nivel. A lo largo del proceso, aplicamos técnicas de análisis estático y dinámico, programación en distintos lenguajes y estrategias de seguridad ofensiva.
+
+📌 Enfoque
+Para cada nivel, documentamos:
+
+La vulnerabilidad identificada
+El enfoque y las técnicas utilizadas para explotarla
+Lecciones aprendidas y buenas prácticas en seguridad
+Este repositorio refleja nuestro aprendizaje en seguridad informática y servirá como referencia para el desarrollo de habilidades en análisis forense, pentesting y CTFs.
+
+⚠️ Aviso: Este proyecto es exclusivamente educativo y se realiza en un entorno controlado.
