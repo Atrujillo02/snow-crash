@@ -1,10 +1,12 @@
-🏴‍☠️ Snow Crash - 42
+
+
+# 🏴‍☠️ Snow Crash - 42
 Este repositorio documenta la resolución del proyecto Snow Crash de la escuela 42, realizado en colaboración con mi amigo Alejandro Ruzafa. Se trata de un desafío de seguridad informática diseñado para desarrollar habilidades en análisis de vulnerabilidades, explotación y seguridad en software.
 
-🎯 Objetivo
+## 🎯 Objetivo
 El proyecto consiste en una serie de niveles, cada uno con una vulnerabilidad específica que debe identificarse y explotarse para obtener acceso al siguiente nivel. A lo largo del proceso, aplicamos técnicas de análisis estático y dinámico, programación en distintos lenguajes y estrategias de seguridad ofensiva.
 
-📌 Enfoque
+## 📌 Enfoque
 Para cada nivel, documentamos:
 
 La vulnerabilidad identificada
