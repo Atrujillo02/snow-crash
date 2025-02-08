@@ -1,29 +1,39 @@
-# SCP Command
+# Snow Crash - Level 02
+
+## Transferring the file
+
+We find a `.pcap` file, which contains network traces. To retrieve it, use the following `scp` command:
+
+```bash
 scp -P4242 level02@localhost:level02.pcap level02.pcap
+```
 
-# Cosa
-Nos hemos encontrado un archivo .pcap que son trazas de red.
+## Analyzing the file
 
-Con una herramienta como Wireshark o tcpdump podemos leerlo y extraer la información
+Using a tool like Wireshark or `tcpdump`, we can read and extract information from the `.pcap` file.
 
+## Telnet Communication
 
-# Telnet
-Analizandolo vemos que hay paquetes TCP y con la utilidad Follow TCP Stream de Wireshark podemos
-juntar el texto que se envió.
+Analyzing the capture, we see TCP packets. Using Wireshark's **Follow TCP Stream** feature, we can reconstruct the text that was sent.
 
+The capture reveals a plaintext communication via Telnet. We can clearly see the prompts for username and password.
 
-Vemos que es un texto en claro de una comunicación con un Telnet.
-Se ve claramente las partes en las que le pide el nombre de usuario y contraseña.
+### Extracted password:
 
-Se ve claramente:
+```
+Password: 
+ft_wandr...NDRel.L0L
+```
 
-> Password: 
-> ft_wandr...NDRel.L0L
+In Telnet, dots (`.`) indicate backspaces, meaning the actual password is:
 
-En telnet los puntos significan que se está borrando un caracter ya enviado, por lo tanto,
-la true contraseña sería:
+```
+ft_waNDReL0L
+```
 
-> ft_waNDReL0L
+The password for the `flag02` user is:
 
-Esa es la contraseña de flag02.
+```
+ft_waNDReL0L
+```
 

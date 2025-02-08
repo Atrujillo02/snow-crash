@@ -1,21 +1,43 @@
-# Commands
+# Snow Crash - Level 00
 
-<code>
+## Finding files
+
+Execute the following command to locate files owned by the `flag00` user:
+
+```bash
 find / -user flag00 2>/dev/null
-</code>
+```
 
-Result:
+### Output:
+
+```
 /usr/sbin/john
 /rofs/usr/sbin/john
+```
 
-<code>
+One of the found files is `/usr/sbin/john`, which may contain useful information. Inspect it using:
+
+```bash
 cat /usr/sbin/john
-</code>
+```
 
-Result:
+### Output:
+
+```
 cdiiddwpgswtgt
+```
 
+## Deciphering the string
 
-## Cesar cypher
-ROT 11: nottoohardhere
-That is the password for flag00 user.
+The obtained string appears to be encoded with a Caesar cipher. Applying a shift of 11 characters (ROT11):
+
+```
+cdiiddwpgswtgt -> nottoohardhere
+```
+
+The password for the `flag00` user is:
+
+```
+nottoohardhere
+```
+

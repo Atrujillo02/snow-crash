@@ -1,21 +1,38 @@
-# Commands
+# Snow Crash - Level 01
 
-<code>
+## Finding user information
+
+Execute the following command to find information about `flag01`:
+
+```bash
 cat /etc/passwd | grep flag01
-</code>
+```
 
-We can see that flag01 password is hashed directly at /etc/passwd file.
-<code>
-  flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
-</code>
+### Output:
 
+```
+flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+```
 
-## John the Ripper
-Using a program such as John the Ripper we can try to crack the hash.
-<code>
+The password for `flag01` is stored as a hash directly in the `/etc/passwd` file.
+
+## Cracking the hash
+
+Using a tool like John the Ripper, we can attempt to crack the hash:
+
+```bash
 john /etc/passwd
-</code>
-Result:
-abcdefg
+```
 
+### Output:
+
+```
+abcdefg
+```
+
+The password for the `flag01` user is:
+
+```
+abcdefg
+```
 
