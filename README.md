@@ -1,17 +1,21 @@
 
 
 # 🏴‍☠️ Snow Crash - 42
-Este repositorio documenta la resolución del proyecto Snow Crash de la escuela 42, realizado en colaboración con mi amigo Alejandro Ruzafa. Se trata de un desafío de seguridad informática diseñado para desarrollar habilidades en análisis de vulnerabilidades, explotación y seguridad en software.
 
-## 🎯 Objetivo
-El proyecto consiste en una serie de niveles, cada uno con una vulnerabilidad específica que debe identificarse y explotarse para obtener acceso al siguiente nivel. A lo largo del proceso, aplicamos técnicas de análisis estático y dinámico, programación en distintos lenguajes y estrategias de seguridad ofensiva.
+This repository documents the resolution of the Snow Crash project from 42 school, completed in collaboration with my friend Alejandro Ruzafa. This project is a cybersecurity challenge designed to develop skills in vulnerability analysis, exploitation, and software security.
 
-## 📌 Enfoque
-Para cada nivel, documentamos:
+## 🎯 Objective
 
-La vulnerabilidad identificada
-El enfoque y las técnicas utilizadas para explotarla
-Lecciones aprendidas y buenas prácticas en seguridad
-Este repositorio refleja nuestro aprendizaje en seguridad informática y servirá como referencia para el desarrollo de habilidades en análisis forense, pentesting y CTFs.
+The project consists of a series of levels, each containing a specific vulnerability that must be identified and exploited to gain access to the next level. Throughout the process, we apply static and dynamic analysis techniques, programming in different languages, and offensive security strategies.
 
-⚠️ Aviso: Este proyecto es exclusivamente educativo y se realiza en un entorno controlado.
+## 📌 Approach
+
+For each level, we document:
+
+- The identified vulnerability
+- The approach and techniques used to exploit it
+- Lessons learned and best security practices
+
+This repository reflects our learning in cybersecurity and serves as a reference for developing skills in forensic analysis, pentesting, and CTFs.
+
+⚠️ Disclaimer: This project is exclusively for educational purposes and is conducted in a controlled environment.
